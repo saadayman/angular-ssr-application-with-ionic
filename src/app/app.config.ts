@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
      provideRouter(routes),
      provideIonicAngular({mode:'ios'}),
-     provideServerRendering(),
+    //  provideServerRendering(),
     //  importProvidersFrom(IonicStorageModule)
     //  IonicStorageModule,
     // importProvidersFrom(IonicStorageModule.forRoot()),
