@@ -9,12 +9,12 @@ import { Storage } from '@ionic/storage-angular';
 import { addIcons } from 'ionicons';
 import { camera, film, flash, home } from 'ionicons/icons';
 import { STORAGE } from './storage';
-import { MenuController } from '@ionic/angular/standalone';
+import { IonApp, IonContent, MenuController } from '@ionic/angular/standalone';
 // import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet,CommonModule,IonApp,IonContent],
     templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

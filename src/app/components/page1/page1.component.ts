@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { IonButton, IonContent ,IonBreadcrumbs,IonButtons, IonHeader, IonToolbar, IonMenu, IonMenuButton, IonTitle, IonToast, IonList, IonLabel, IonSegment, IonSegmentButton, IonItem, IonBadge, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonDatetime, IonAvatar, IonIcon, IonBreadcrumb} from '@ionic/angular/standalone';
-
-
 @Component({
   selector: 'app-page1',
   templateUrl: './page1.component.html',
@@ -11,9 +9,13 @@ import { IonButton, IonContent ,IonBreadcrumbs,IonButtons, IonHeader, IonToolbar
   styleUrls: ['./page1.component.scss'],
 })
 export class Page1Component  implements OnInit {
-  data: any = null;
+  data: any = null; 
+   angularVersion: string = VERSION.full;
 
-  constructor() { }
+
+  constructor() {
+    
+   }
 
   ngOnInit() {
     fetch('https://jsonplaceholder.typicode.com/posts')
