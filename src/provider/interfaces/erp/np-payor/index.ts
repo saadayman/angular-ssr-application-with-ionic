@@ -1,0 +1,1 @@
+export * from './np-patient-payor-subscription.interface'

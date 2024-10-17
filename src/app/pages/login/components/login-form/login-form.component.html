@@ -1,0 +1,84 @@
+@if(this.returnUrl !== '/'){
+  <p class="login-alert">Please login to access this page</p> 
+}
+<form [formGroup]="this._GeneralService.LoginForm">
+
+<ion-col size="12" mode="md" (keydown.enter)="login_button()" >
+  <ion-item   fill="outline" style="margin:5px">
+    <ion-input 
+    autofocus="true"
+    formControlName="email"
+    placeholder="Email"
+    autocomplete="email"
+     type="email">
+    </ion-input>
+    <ion-note *ngIf="this.email?.touched  && this.email.errors?.['email']" slot="error">
+      Enter valid Email please
+    </ion-note>
+    <ion-note *ngIf="this.email?.touched && this.email.errors?.['required']" slot="error">
+      Email can't be empty
+    </ion-note>
+  </ion-item>
+ {{this._GeneralService.LoginForm}}
+  <ion-item [formGroup]="this._GeneralService.LoginForm" fill="outline" style="margin:5px">
+    <ion-input 
+      formControlName="password"
+      autocomplete="password"
+      placeholder="Password"
+      
+      >
+    </ion-input>
+    <ion-icon [name]="this.viewPass? 'eye-outline': 'eye-off-outline'" color="primary" slot="end" style="transform: scaleX(-1);cursor: pointer;"
+    (click)="this.controlViewPassword()"
+    *ngIf="this.password?.value">
+    </ion-icon>
+    
+    <ion-note *ngIf="this.password.touched && this.password?.errors?.required" slot="error">
+      Password can't be empty
+    </ion-note>
+  </ion-item>
+
+  <ion-item [formGroup]="this._GeneralService.LoginForm"  fill="outline" style="margin:5px">
+    <ion-input 
+    formControlName="site"
+    placeholder="Site"
+     type="text">
+    </ion-input>
+    <ion-spinner *ngIf="this._GeneralService.LoginForm.status === 'PENDING'" name="bubbles" color="primary"></ion-spinner>
+    {{this.site.touched&& this.site.errors?.['required']}}
+    <ion-note *ngIf="this.site.touched&& this.site.errors?.['required'] " slot="error">
+      Site can't be empty
+    </ion-note>
+    <ion-note *ngIf="this._GeneralService.LoginForm.dirty && this.site.invalid && this.site.errors?.['site_not_found']" slot="error">
+      Site not found
+    </ion-note>
+  </ion-item>
+  
+</ion-col>
+
+<ion-col size="12">
+  <ion-button [disabled]="this._GeneralService.LoginForm.invalid || this._GeneralService.LoginForm.status === 'PENDING'"
+    style="--background:#004e82e8 ;" size="large" expand="block"
+  (click)="login_button()">
+  Login
+</ion-button> 
+  <span style="display: grid; font-size: 11px; margin-left: 8px;">
+    <ion-text *ngIf="this._GeneralService.LoginForm.invalid && this._GeneralService.LoginForm.get('site').hasError('unknown_error')" color="danger"><ion-icon name="warning"></ion-icon>
+      Contact Support team and retry please.
+    </ion-text>
+
+    <ion-text *ngIf="this._GeneralService.errorMsg" color="danger"><ion-icon name="warning"></ion-icon>
+      {{this._GeneralService.errorMsg}}
+    </ion-text>
+
+    <ion-text *ngIf="this._GeneralService.LoginForm.errors?.['blocking']" color="danger"><ion-icon name="warning"></ion-icon>
+      You have Entered Wrong credentials more than 3 times.
+    </ion-text>
+      
+      <ion-note *ngIf="this._GeneralService.LoginForm.errors?.['blocking']" color="danger">
+        Please try again after {{this._GeneralService.timer}} seconds
+      </ion-note>
+  </span>
+</ion-col>
+</form>
+

@@ -1,0 +1,1 @@
+export * from './np-patient-medication.interface'

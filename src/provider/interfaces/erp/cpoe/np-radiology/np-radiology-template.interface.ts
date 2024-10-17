@@ -1,0 +1,96 @@
+import { CheckBox, Docstatus } from "../../common.types";
+import { ServicesDetail } from "../cpoe.interface";
+
+
+export interface NP_Radiology_Template {
+    name: string;
+    owner: string;
+    creation: string;
+    modified: string;
+    modified_by: string;
+    docstatus: Docstatus;
+    idx: number;
+    template_name: string;
+    alert: CheckBox;
+    description: string;
+    item_code: string;
+    item: string;
+    uom: string;
+    item_group: string;
+    is_billable: CheckBox;
+    disabled: CheckBox;
+    allow_booking: CheckBox;
+    allow_direct_deduction: CheckBox;
+    consume_stock: number;
+    auto_generation_delivery_note: CheckBox;
+    doctype: string;
+    items: any[];
+    services_details: ServicesDetail[];
+}
+
+
+export interface NP_Patient_Radiology_Order {
+    name: string;
+    owner: string;
+    creation: string;
+    modified: string;
+    modified_by: string;
+    docstatus: Docstatus;
+    idx: number;
+    naming_series: string;
+    title: string;
+    patient: string;
+    patient_name: string;
+    full_name_in_arabic: string;
+    nid_or_iqama_id: string;
+    nationality: string;
+    date_of_birth: string;
+    gender: string;
+    mobile: string;
+    blood_group: string;
+    date_of_joining: string;
+    country: string;
+    campaign: string;
+    alert: CheckBox;
+    template_name: string;
+    requested_practitioner: string;
+    practitioner_name: string;
+    requested_department: string;
+    requester: string;
+    requester_name: string;
+    medical_department: string;
+    reference_doctype: string;
+    reference_name: string;
+    reference_date: string;
+    reference_time: string;
+    company: string;
+    order_date: string;
+    order_valid_to: string;
+    order_time: string;
+    revoke_reason: string;
+    order_status: string;
+    order_intent: string;
+    order_priority: string;
+    comment: string;
+    np_patient_episode: string;
+    np_patient_treatment_plan: string;
+    np_package_subscription: string;
+    np_patient_payor_approval: string;
+    consent_form_created: number;
+    related_appointment: string;
+    price_list: string;
+    billing_item: string;
+    quantity: number;
+    service_unit: string;
+    discount_type: string;
+    given_discount: number;
+    invoiced_quantity: number;
+    is_billable: CheckBox;
+    is_invoiced: CheckBox;
+    request_deduction: CheckBox;
+    package_item_id: string;
+    remaining_quantity: number;
+    price_list_rate: number;
+    doctype: string;
+    transaction_references: any[];
+}

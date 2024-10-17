@@ -1,0 +1,11 @@
+ion-content::part(background) {
+    // background: url('../../../assets/Images/background_login.svg');
+
+  }
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{this.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!this._ReleaseNotesService.finishUpdate && this.Data.role =='update'" (click)="this.dismiss()">
+        <ion-label>{{this.button}}</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-text style="padding: 15px; margin: 20px;">
+  {{this.msg}}
+  <div>
+    <ul>
+      <li *ngFor="let note of this.release_notes">{{note}}</li>
+    </ul>
+  </div>
+</ion-text>

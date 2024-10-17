@@ -1,0 +1,39 @@
+<ion-app>
+  <ion-content [fullscreen]="true" class="ion-no-padding" >
+    <div class="card-container" >
+ `
+      <ion-card  style="max-width: 417px;width:100%">
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <!-- <img style="max-width: 80%; max-height: 175px; display: flex; margin: auto;"  src="https://s3.fr-par.scw.cloud/nix.logo/Full-logo.png" alt=""> -->
+                <img style="max-width: 80%; max-height: 175px; display: flex; margin: auto;" 
+                src="../../../../assets/Images/sys/Full-logo.png" alt="Nixpend Logo">
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <app-login-form 
+                *ngIf="this._GeneralService.form_type === 'login'">
+                </app-login-form>
+
+                <app-login-otp 
+                *ngIf="this._GeneralService.form_type === 'otp'">
+                </app-login-otp>
+
+                <app-login-forget-password 
+                *ngIf="this._GeneralService.form_type === 'forget-password'">
+                </app-login-forget-password>
+              </ion-col>
+            </ion-row>
+            <app-login-footer>
+            </app-login-footer>
+          </ion-grid>          
+        </ion-card-content>
+      </ion-card>
+    </div>
+</ion-content>
+</ion-app>
+

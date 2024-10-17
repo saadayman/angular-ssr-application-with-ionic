@@ -1,0 +1,1 @@
+export * from './np-appointment-type.interface'

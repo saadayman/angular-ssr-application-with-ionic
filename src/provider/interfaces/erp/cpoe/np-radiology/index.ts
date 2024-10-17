@@ -1,0 +1,1 @@
+export * from './np-radiology-template.interface'

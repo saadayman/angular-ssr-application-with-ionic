@@ -1,0 +1,40 @@
+<ion-col [formGroup]="this._GeneralService.otpForm" (keydown.enter)="checkOtp()">
+  <ion-label *ngIf="this._GeneralService.otp_information?.verification?.prompt">{{this._GeneralService.otp_information?.verification?.prompt}} </ion-label>
+  <ion-label *ngIf="this._GeneralService.otp_information?.verification?.prompt===false"><span style="color:red;">Please Contact The Administrator for the 2FA process.</span> </ion-label>
+
+  <ion-item  fill="outline" style="margin:5px">
+    <ion-label position="floating">OTP Code</ion-label>
+    <ion-input placeholder="Enter OTP" formControlName="otp"></ion-input>          
+</ion-item>
+
+
+  <ion-button  [disabled]="this.resendOtpDisabled" (click)="this.resend_otp()">  
+    <ion-label>Resend Otp</ion-label>
+  </ion-button>
+<div *ngIf="this.resendOtpDisabled" style="margin-left:0.3rem;color:red;" >Time remaining: {{ this.otpRemainingTime }}s</div>
+</ion-col>
+
+<ion-col size="12">
+  <ion-button [disabled]="this._GeneralService.otpForm.invalid || this._GeneralService.otpForm.status === 'PENDING'"
+    style="--background:#004e82e8 ;" size="large" expand="block"
+  (click)="checkOtp()">
+  Check OTP
+</ion-button> 
+  <span style="display: grid; font-size: 11px; margin-left: 8px;">
+    <ion-text *ngIf="this._GeneralService.otpForm.invalid && this._GeneralService.otpForm.hasError('unknown_error')" color="danger"><ion-icon name="warning"></ion-icon>
+      Contact Support team and retry please.
+    </ion-text>
+
+    <ion-text *ngIf="this._GeneralService.errorMsg" color="danger"><ion-icon name="warning"></ion-icon>
+      {{this._GeneralService.errorMsg}}
+    </ion-text>
+
+    <ion-text *ngIf="this._GeneralService.otpForm.errors?.['blocking']" color="danger"><ion-icon name="warning"></ion-icon>
+      You have Entered Wrong credentials more than 3 times.
+    </ion-text>
+      
+      <ion-note *ngIf="this._GeneralService.LoginForm.errors?.['blocking']" color="danger">
+        Please try again after {{this._GeneralService.timer}} seconds
+      </ion-note>
+  </span>
+</ion-col>

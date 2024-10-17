@@ -6,12 +6,14 @@ import { provideIonicAngular } from '@ionic/angular/standalone';
 import { routes } from './app.routes';
 import { StorageProvider } from './storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 // import { IonicStorageModule, provideStorage, StorageConfig } from '@ionic/storage-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
      provideRouter(routes),
      provideIonicAngular({mode:'ios'}),
+     provideHttpClient(withFetch()),
     //  provideServerRendering(),
     //  importProvidersFrom(IonicStorageModule)
     //  IonicStorageModule,
